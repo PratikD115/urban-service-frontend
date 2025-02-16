@@ -75,7 +75,7 @@ export const AddAddress = ({ userId, updateAddresses }) => { // Update prop name
               />
             </Grid>
             <Grid item xs={12}>
-              <Link to='/user/dashboard'>
+              <Link to='/user'>
                 <Button variant="contained" color="primary" onClick={handleAddAddress}>
                   Add Address
                 </Button>

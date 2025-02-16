@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import './AddService.css'
 
-export const AddService = () => {
+const AddService = () => {
   const {register, handleSubmit,reset} = useForm();
   const [categories, setcategories] = useState([])
   const [types,setType] = useState([]) 
@@ -236,3 +235,4 @@ return (
   );
 };
 
+export default AddService;

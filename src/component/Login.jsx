@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const Login = () => {
+const Login = () => {
   const { register, handleSubmit } = useForm();
   const [roles, setRoles] = useState();
 
@@ -195,7 +195,7 @@ export const Login = () => {
                         </label>
                         <div className="ms-auto">
                           <Link
-                            to="/forgotpassword"
+                            to="/forgotPassword"
                             className="text-sm forgot-password-link text-gray"
                             style={{ transition: "color 0.3s" }}
                             onMouseOver={(e) =>
@@ -236,3 +236,5 @@ export const Login = () => {
     </>
   );
 };
+
+export default Login;

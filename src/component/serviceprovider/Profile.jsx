@@ -23,7 +23,7 @@ const theme = createTheme({
   },
 });
 
-export const ServiceProviderProfile = () => {
+const ServiceProviderProfile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true);
   const [spData, setspData] = useState(null); 
@@ -275,4 +275,4 @@ export const ServiceProviderProfile = () => {
   );
 };
 
-
+export default ServiceProviderProfile;

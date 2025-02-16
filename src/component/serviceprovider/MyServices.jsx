@@ -12,7 +12,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
-export const MyServices = () => {
+const MyServices = () => {
     const [serviceProviders, setServiceProviders] = useState([]);
     const [serviceAnalyticsData, setServiceAnalyticsData] = useState(null);
     const [mostPopularService, setMostPopularService] = useState('');
@@ -230,3 +230,5 @@ const PrevArrow = (props) => {
         </div>
     );
 };
+
+export default MyServices;

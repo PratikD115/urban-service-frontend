@@ -1,26 +1,39 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Typography, TextField, Button, Grid, Card, CardContent, CssBaseline, Container, Snackbar, IconButton, InputAdornment, Divider } from "@mui/material";
-import MuiAlert from '@mui/material/Alert';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import axios from 'axios';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  Typography,
+  TextField,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  CssBaseline,
+  Container,
+  Snackbar,
+  IconButton,
+  InputAdornment,
+  Divider,
+} from "@mui/material";
+import MuiAlert from "@mui/material/Alert";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import axios from "axios";
 
-export const ResetPassword = () => {
+const ResetPassword = () => {
   const location = useLocation();
   const { register, handleSubmit } = useForm({
     defaultValues: {
       email: location?.state?.email,
-    }
+    },
   });
   const navigate = useNavigate();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
-  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [snackbarMessage, setSnackbarMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSnackbarClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setSnackbarOpen(false);
@@ -38,31 +51,42 @@ export const ResetPassword = () => {
       time: new Date().getTime(),
     };
     try {
-      const res = await axios.post("http://localhost:4000/users/user/resetpassword", dataToSend);
+      const res = await axios.post(
+        "http://localhost:4000/users/user/resetpassword",
+        dataToSend
+      );
       if (res.data.flag === 1) {
-        setSnackbarSeverity('success');
-        setSnackbarMessage('Password updated successfully!');
+        setSnackbarSeverity("success");
+        setSnackbarMessage("Password updated successfully!");
         setSnackbarOpen(true);
         setTimeout(() => {
-          navigate('/login');
+          navigate("/login");
         }, 2000);
       } else {
-        setSnackbarSeverity('error');
-        setSnackbarMessage(res.data.message || 'Password reset failed');
+        setSnackbarSeverity("error");
+        setSnackbarMessage(res.data.message || "Password reset failed");
         setSnackbarOpen(true);
-        navigate('/login');
+        navigate("/login");
       }
     } catch (error) {
       console.error("Error resetting password:", error);
-      setSnackbarSeverity('error');
-      setSnackbarMessage('Password reset failed');
+      setSnackbarSeverity("error");
+      setSnackbarMessage("Password reset failed");
       setSnackbarOpen(true);
-      navigate('/login');
+      navigate("/login");
     }
   };
 
   return (
-    <div style={{ backgroundColor: "#f0f0f0", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div
+      style={{
+        backgroundColor: "#f0f0f0",
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <CssBaseline />
       <Container maxWidth="sm">
         <Card sx={{ borderRadius: 12, boxShadow: 8 }}>
@@ -110,7 +134,12 @@ export const ResetPassword = () => {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <Button type="submit" variant="contained" color="primary" fullWidth>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                  >
                     Submit
                   </Button>
                 </Grid>
@@ -120,16 +149,29 @@ export const ResetPassword = () => {
             <Typography variant="body2" align="center" gutterBottom>
               Password Policy Information:
               <br />
-              Your password should be at least 8 characters long and contain a mix of uppercase and lowercase letters, numbers, and special characters.
+              Your password should be at least 8 characters long and contain a
+              mix of uppercase and lowercase letters, numbers, and special
+              characters.
             </Typography>
           </CardContent>
         </Card>
       </Container>
-      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-        <MuiAlert elevation={6} variant="filled" onClose={handleSnackbarClose} severity={snackbarSeverity}>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <MuiAlert
+          elevation={6}
+          variant="filled"
+          onClose={handleSnackbarClose}
+          severity={snackbarSeverity}
+        >
           {snackbarMessage}
         </MuiAlert>
       </Snackbar>
     </div>
   );
 };
+export default ResetPassword;

@@ -12,7 +12,7 @@ import grid_2 from "./img/E1.png";
 import grid_3 from "./img/Hair1.png";
 import { Link } from "react-router-dom";
 
-export const MainPage = () => {
+const MainPage = () => {
   return (
     <div
       style={{
@@ -326,3 +326,5 @@ export const MainPage = () => {
     </div>
   );
 };
+
+export default MainPage;

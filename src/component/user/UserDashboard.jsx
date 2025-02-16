@@ -19,7 +19,7 @@ import {
 } from "@mui/material";
 import { TrendingUp, DoneAll, MonetizationOn } from "@mui/icons-material";
 
-export const UserDashboard = () => {
+const UserDashboard = () => {
   const [book, setBook] = useState([]);
   const [totalBook, setTotalBook] = useState([]);
   const [doneBook, setDoneBook] = useState([]);
@@ -266,3 +266,5 @@ export const UserDashboard = () => {
     </>
   );
 };
+
+export default UserDashboard;
